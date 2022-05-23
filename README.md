@@ -14,7 +14,7 @@ Presented tool was created with the intention of using it roguelike-styled games
 
 ## How it works?
 Creating empty dungeon:
-- Dividing the dungeon space into smaller spaces using the [Binary Space Partitioning](https://pl.wikipedia.org/wiki/Binary_space_partitioning) in order to create suitable place for each room.
+- Dividing the dungeon space into smaller spaces using the [Binary Space Partitioning](https://en.wikipedia.org/wiki/Binary_space_partitioning) in order to create suitable place for each room.
 - Creating rectangular rooms (or randomly shaped rooms based on implemented [Random Walk algorithm](https://en.wikipedia.org/wiki/Random_walk)) and puting each created room inside list.
 - Storing each room's center position and it's floors positions set.
 - Creating narrow corridors by linikng neighbouring rooms together.
