@@ -1,6 +1,6 @@
 # Roguelike Dungeon Generator
 This project is a 2D top-down dungeon generation tool.
-Presented tool was created with the intention of using it roguelike-styled games.
+Presented tool was created with the intention of using it in roguelike-styled games.
 
 <img src="images/dungeonGeneration.gif">
 
