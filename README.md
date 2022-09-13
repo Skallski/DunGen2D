@@ -1,34 +1,53 @@
-# Roguelike Dungeon Generator
-This project is a 2D top-down dungeon generation tool.
-Presented tool was created with the intention of using it in roguelike-styled games.
+# EZ Dungeon
+"EZ Dungeon" is procedural 2D top-down grid based generation tool.
 
-<img src="images/dungeonGeneration.gif">
+## Main Features:
+1. Procedural generation
+2. Customisable layout
+3. Room type classification system
+4. Interior generation subsystem
+5. Grid based design
 
-## Features:
-1. Customisable dungeon layout by provided set of parameters
-2. Possibility of creating one from two room shapes (rectangular or random)
-3. Sample interior generation
-4. Modular room type system
+<img src="images/scr_dungeon.png">
 
-<img src="images/proceduralDungeon.png">
+## Overview:
 
-## How it works?
-Creating empty dungeon:
-- Dividing the dungeon space into smaller spaces using the [Binary Space Partitioning](https://en.wikipedia.org/wiki/Binary_space_partitioning) in order to create suitable place for each room.
-- Creating rectangular rooms (or randomly shaped rooms based on implemented [Random Walk algorithm](https://en.wikipedia.org/wiki/Random_walk)) and puting each created room inside list.
-- Storing each room's center position and it's floors positions set.
-- Creating narrow corridors by linikng neighbouring rooms together.
+### Dungeon generation
 
-Interior generation:
-- Puting each created room's center position and floors position set into dictionary.
-- Spawning room prefabs and setting appropriate values for them based on rooms dictionary (first: spawn room, last: exit room, middle: enemy room and chance for special room with treasure)
-- Setting available floors position for each room based on room dictionary
-- Spawning interior objects on available floor positions and updating list of available positions.
+<img src="images/scr_dungeonGeneration.gif">
 
+Whole dungeon generation process is based on two implemented algorithms:
+* ["Binary space partitioning"](https://en.wikipedia.org/wiki/Binary_space_partitioning) in order to designate proper places for rooms to be created
+* ["Random walk"](https://en.wikipedia.org/wiki/Random_walk) in order to create floors and walls in spaces designated earlier
 
-Interior object is a struct that stores object's prefab, max quantity along with it's width and height. With this approach creating dungeon interiors its much easier.
+### Room type classification
+One of the main goals was to ensure some diversity, therefore a system of classifying rooms into types was created.
 
-<img src="images/interiorPlacementSystem.png">
+I have designed some sample types with their primitive use cases:
+* Spawn room - starting room (e.g. place where player character will be spawned)
+* Enemy Room - (e.g. room where enemies are being spawned)
+* Exit room - ending room (e.g. place where gate to next level is located)
+* Special room - (e.g. treasure room or merchant's room)
+
+You can easily add more or reduce number of room types by modifying system's parameters.
+
+<img src="images/scr_roomSystem.png">
+
+### Interior generation
+In order to add some life into dungeon rooms, an interior generation system has been implemented.
+
+One of the main goals was to create the simpliest way of spawning prefabs of some objects and enemies inside grid based rooms.
+For this purpose an ["Interior object"](EZ_Dungeon/LevelGeneration/InteriorGeneration/InteriorObject.cs) structure has ben designed.
+
+For each interior object we store:
+* Its prefab
+* Its quantity range (between min and max)
+* Its grid width and height
+* Its possition offset (to prevent the need of playuing with every sprite's pivot)
+
+Thanks to this approach, we are able to easily spawn and manipulate objects and fit them equally with the grid.
+
+<img src="images/scr_interiorSystem.png">
 
 ## My package
 Here is a link for my custom package, which i used in this project:
