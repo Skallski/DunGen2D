@@ -8,8 +8,6 @@
 4. Interior generation subsystem
 5. Grid based design
 
-<img src="images/scr_dungeon.png">
-
 ## Overview:
 
 ### Dungeon generation
